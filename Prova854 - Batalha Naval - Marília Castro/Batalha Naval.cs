@@ -1,7 +1,6 @@
 ﻿/*
 
 
-
 ======= Crie um jogo de batalha naval onde 2 jogadores podem participar =======
 
 === Sobre o jogo ===
@@ -26,7 +25,6 @@ Cada jogador possui as seguintes embarcações:
 4 Submarinos (2 quadrantes)
 Definições e regras do programa
 Jogando contra outro oponente
-
 
 
 1. Programa pergunta se o jogo será entre dois jogadores reais ou se vai jogar sozinho, ou seja, contra o computador.
@@ -57,8 +55,6 @@ SB - Submarinos (2 quadrantes)
  Console.WriteLine("Qual a sua posição?")
  // input: F6G6
 
-
-
  
 7. O programa repete as instruções até que o primeiro jogador termine de posicionar os navios.
 
@@ -66,7 +62,6 @@ SB - Submarinos (2 quadrantes)
 
 9. Quando o jogador for efetuar um disparo o pregrama recebe a posição indicada e verifica se acertou o navio.
  
-
 
 ======= Regras Gerais =======
 
@@ -82,9 +77,19 @@ SB - Submarinos (2 quadrantes)
 - Quando um disparo for certeiro o programa deve apresentar uma mensagem e também quando o disparo for errado.
 
 
-
  */
 
+
+Console.WriteLine("============================");
+Console.WriteLine("|                          |");
+Console.WriteLine("|                          |");
+Console.WriteLine("|        SE PREPARE        |");
+Console.WriteLine("|        PARA JOGAR        |");
+Console.WriteLine("|                          |");
+Console.WriteLine("|                          |");
+Console.WriteLine("============================");
+Console.ReadLine();
+Console.Clear();
 
 Console.WriteLine("============================");
 Console.WriteLine("|                          |");
@@ -96,71 +101,86 @@ Console.WriteLine("============================");
 Console.ReadLine();
 Console.Clear();
 
-
-
-
-//Para o menu, ideia
-//reformular o menu, pois é inviavel deixar dentro do "DO" a menos que eu retorne alguma opção e pegue o if por fora e não por dentro.
-//Reflita
-
-string opcaoMenu;
-Console.WriteLine("Este é o menu inicial, digite o número correspondente para navegar: ");
-Console.WriteLine("1. Iniciar Jogo");
-Console.WriteLine("2. Regras");
-Console.WriteLine(" ");
-do
+int intOpcaoMenu = 1;
+while (intOpcaoMenu != 0)
 {
-    // Console.WriteLine("Este é o menu inicial, digite o número correspondente para navegar: ");
-    // Console.WriteLine("1. Iniciar Jogo");
-    // Console.WriteLine("2. Regras");
-    opcaoMenu = Console.ReadLine();
     Console.Clear();
+    Console.WriteLine(" ");
+    Console.WriteLine("Bem vindo ao menu principal!");
+    Console.WriteLine("Escolha uma das opção abaixo e digite seu número correspondente.");
+    Console.WriteLine(" ");
+    Console.WriteLine("1. Iniciar Jogo");
+    Console.WriteLine("2. Regras e Como de Jogar");
+    Console.WriteLine("0. Fechar Jogo");
+    string opcaoMenu = Console.ReadLine ();
+    intOpcaoMenu = Convert.ToInt32(opcaoMenu);
 
-
-    //convertendo a string para int nas opções do menu para poder dar entrada corretamente
-    //posso colocar nome e usar um dicionário, mas assim acho mais fácil
-    int intOpcaoMenu = Convert.ToInt32(opcaoMenu);
-
-
-    //posso fazer um switch com as opções do menu
-    if (intOpcaoMenu == 1)
+    if (intOpcaoMenu == 0)
     {
-        List<string> nomeJogadores = new List<string>();
-
-        Console.WriteLine("Jogador nº1, insira seu nome abaixo: ");
-        var jogador1 = Console.ReadLine();
-        nomeJogadores.Add(jogador1);
-        Console.WriteLine(" ");
-        Console.Clear();
-
-        Console.WriteLine("Jogador nº2, insira seu nome abaixo: ");
-        var jogador2 = Console.ReadLine();
-        nomeJogadores.Add(jogador2);
-        Console.Clear();
-
-        Console.WriteLine(" ");
-
-
-        Console.WriteLine($"{jogador1} e {jogador2}, vocês jogarão batalha naval!");
-
-       /* foreach (var nomes in nomeJogadores)
-        {
-            Console.WriteLine(nomes);
-        }*/
-
         break;
     }
-    else
+
+    else if (intOpcaoMenu == 1)
     {
-        Console.WriteLine("===== REGRAS DA BATALHA NAVAL =====");
-        Console.WriteLine(" ");
-        Console.ReadLine();
-        break;
+        Console.Clear();
+        Console.WriteLine("Iniciando Jogo");
+        entradaDados();
     }
+
+    else if (intOpcaoMenu == 2)
+    {
+        Console.Clear();
+        Console.WriteLine("====== REGRAS ======");
+        Console.WriteLine(" ");
+        Console.WriteLine(" ");
+        Console.WriteLine("Batalha naval é um jogo de tabuleiro de dois jogadores,");
+        Console.WriteLine("no qual os jogadores têm de adivinhar em que quadrados estão os navios do oponente.");
+        Console.WriteLine(" ");
+        Console.WriteLine("Cada jogador possui seu próprio tabuleiro de dimensão 10x10");
+        Console.WriteLine("onde as linhas são representadas por letras(A - J) e as colunas são representadas por números(1 - 10).");
+        Console.WriteLine(" ");
+        Console.WriteLine("Os jogadores devem posicionar suas embarcações dentro dos quadrantes correspondentes.");
+        Console.WriteLine("As embarcações devem ser posicionadas na vertical ou horizontal sempre formando uma reta e nunca em diagonal.");
+        Console.WriteLine(" ");
+        Console.WriteLine(" ");
+        Console.WriteLine("‣ Aperte qualquer tecla para voltar ao menu.");
+        Console.ReadKey();
+    }
+
+    else //DESCOBRIR COMO APENAS ACEITAR NUMERO E NÃO LETRA
+    {
+        Console.Clear();
+        Console.WriteLine("Opção Inválida!");
+        Console.WriteLine("Aperte qualquer tecla e volte ao menu.");
+        Console.ReadKey();
+    }
+
 
 
 }
-while (!int.TryParse(opcaoMenu, out var opcao) || opcao > 0);
 
+  static void entradaDados ()
+{
+    var jogador1 = "";
+    var jogador2 = "";
 
+    List<string> jogadores = new List<string> ();
 
+    Console.Clear ();
+    Console.WriteLine(" ");
+    Console.WriteLine("Jogador nº1, digite seu nome abaixo: ");
+    jogador1 = Console.ReadLine ();
+    jogadores.Add (jogador1);
+
+    Console.Clear();
+    Console.WriteLine(" ");
+    Console.WriteLine("Jogador nº2, agora é a sua vez, digite seu nome abaixo: ");
+    jogador2 = Console.ReadLine();
+    jogadores.Add (jogador2);
+
+    Console.Clear(); //ESTÁ VOLTANDO PARA O MENU PRINCIPAL, CORRIGIR ISSO
+    Console.WriteLine(" ");
+    Console.WriteLine("Muito bem " + jogadores[0] + " e " + jogadores[1] + "!" );
+    Console.WriteLine("O jogo já vai começar!");
+    Console.WriteLine("Passe o comando para " + jogadores[0] + ", por favor.");
+}
