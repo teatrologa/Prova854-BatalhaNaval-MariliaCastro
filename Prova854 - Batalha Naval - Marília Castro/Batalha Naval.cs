@@ -1,8 +1,24 @@
 ﻿/*
- Crie um jogo de batalha naval onde 2 jogadores podem participar
 
-Sobre o jogo
-Batalha naval é um jogo de tabuleiro de dois jogadores, no qual os jogadores têm de adivinhar em que quadrados estão os navios do oponente. Cada jogador possui seu próprio tabuleiro de dimensão 10x10 onde as linhas são representadas por letras (A-J) e as colunas são representadas por números (1-10). Os jogadores devem posicionar suas embarcações dentro dos quadrantes correspondentes. As embarcações devem ser posicionadas na vertical ou horizontal sempre formando uma reta e nunca em diagonal. Cada jodagor pode disparar uma vez em cada turno e para efetuar o disparo ele deve informar a posição do quadrante por letra e número. Exemplo: E7. Caso o disparo acerte uma embarcação aquele local é sinalizado. Quando um navio receber todos os disparos ele afunda. O jodo termina quando um dos dois jogadores afundar todos os navios do seu oponente. Cada jogador possui as seguintes embarcações:
+
+
+======= Crie um jogo de batalha naval onde 2 jogadores podem participar =======
+
+=== Sobre o jogo ===
+
+Batalha naval é um jogo de tabuleiro de dois jogadores, no qual os jogadores têm de adivinhar em que quadrados estão os navios do oponente.
+Cada jogador possui seu próprio tabuleiro de dimensão 10x10
+onde as linhas são representadas por letras (A-J) e as colunas são representadas por números (1-10).
+Os jogadores devem posicionar suas embarcações dentro dos quadrantes correspondentes.
+As embarcações devem ser posicionadas na vertical ou horizontal sempre formando uma reta e nunca em diagonal.
+Cada jodagor pode disparar uma vez em cada turno e para efetuar o disparo ele deve informar a posição do quadrante por letra e número.
+Exemplo: E7.
+
+Caso o disparo acerte uma embarcação aquele local é sinalizado.
+Quando um navio receber todos os disparos ele afunda.
+O jodo termina quando um dos dois jogadores afundar todos os navios do seu oponente.
+
+Cada jogador possui as seguintes embarcações:
 
 1 Porta-Aviões (5 quadrantes)
 2 Navio-Tanque (4 quadrantes)
@@ -10,6 +26,8 @@ Batalha naval é um jogo de tabuleiro de dois jogadores, no qual os jogadores t�
 4 Submarinos (2 quadrantes)
 Definições e regras do programa
 Jogando contra outro oponente
+
+
 
 1. Programa pergunta se o jogo será entre dois jogadores reais ou se vai jogar sozinho, ou seja, contra o computador.
 
@@ -64,4 +82,49 @@ SB - Submarinos (2 quadrantes)
 - Quando um disparo for certeiro o programa deve apresentar uma mensagem e também quando o disparo for errado.
 
 
+
  */
+
+
+
+//Para o menu, ideia
+
+string opcaoMenu;
+do
+{
+    Console.WriteLine("Este é o menu inicial, digite o número correspondente para navegar: ");
+    Console.WriteLine("1. Iniciar Jogo");
+    Console.WriteLine("2. Regras");
+    opcaoMenu = Console.ReadLine();
+}
+while (!int.TryParse(opcaoMenu, out var opcao) || opcao > 0);
+
+
+//convertendo a string para int nas opções do menu para poder dar entrada corretamente
+//posso colocar nome e usar um dicionário, mas assim acho mais fácil
+int intOpcaoMenu =  Convert.ToInt32(opcaoMenu);
+
+
+//posso fazer um switch com as opções do menu
+if (intOpcaoMenu == 1)
+{
+    List<string> nomeJogadores = new List<string>();
+
+    Console.WriteLine("Jogador nº1, insira seu nome abaixo: ");
+    var jogador1 = Console.ReadLine();
+    nomeJogadores.Add(jogador1);
+
+    Console.WriteLine("Jogador nº2, insira seu nome abaixo: ");
+    var jogador2 = Console.ReadLine();
+    nomeJogadores.Add(jogador2);
+
+
+    foreach (var nomes in nomeJogadores)
+    {
+        Console.Write(nomes);
+    }
+}
+else
+{
+    Console.WriteLine("===== REGRAS DA BATALHA NAVAL =====");
+}
