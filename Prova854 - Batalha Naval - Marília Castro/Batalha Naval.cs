@@ -86,15 +86,32 @@ SB - Submarinos (2 quadrantes)
  */
 
 
+Console.WriteLine("============================");
+Console.WriteLine("|                          |");
+Console.WriteLine("|                          |");
+Console.WriteLine("|      BATALHA NAVAL       |");
+Console.WriteLine("|                          |");
+Console.WriteLine("|                          |");
+Console.WriteLine("============================");
+Console.ReadLine();
+
+
+
 
 //Para o menu, ideia
+//reformular o menu, pois é inviavel deixar dentro do "DO" a menos que eu retorne alguma opção e pegue o if por fora e não por dentro.
+//Reflita
 
 string opcaoMenu;
+Console.WriteLine("Este é o menu inicial, digite o número correspondente para navegar: ");
+Console.WriteLine("1. Iniciar Jogo");
+Console.WriteLine("2. Regras");
+Console.WriteLine(" ");
 do
 {
-    Console.WriteLine("Este é o menu inicial, digite o número correspondente para navegar: ");
-    Console.WriteLine("1. Iniciar Jogo");
-    Console.WriteLine("2. Regras");
+    // Console.WriteLine("Este é o menu inicial, digite o número correspondente para navegar: ");
+    // Console.WriteLine("1. Iniciar Jogo");
+    // Console.WriteLine("2. Regras");
     opcaoMenu = Console.ReadLine();
 
 
@@ -111,20 +128,30 @@ do
         Console.WriteLine("Jogador nº1, insira seu nome abaixo: ");
         var jogador1 = Console.ReadLine();
         nomeJogadores.Add(jogador1);
+        Console.WriteLine(" ");
 
         Console.WriteLine("Jogador nº2, insira seu nome abaixo: ");
         var jogador2 = Console.ReadLine();
         nomeJogadores.Add(jogador2);
 
+        Console.WriteLine(" ");
 
-        foreach (var nomes in nomeJogadores)
+
+        Console.WriteLine($"{jogador1} e {jogador2}, vocês jogarão batalha naval!");
+
+       /* foreach (var nomes in nomeJogadores)
         {
-            Console.Write(nomes);
-        }
+            Console.WriteLine(nomes);
+        }*/
+
+        break;
     }
     else
     {
         Console.WriteLine("===== REGRAS DA BATALHA NAVAL =====");
+        Console.WriteLine(" ");
+        Console.ReadLine();
+        break;
     }
 
 
