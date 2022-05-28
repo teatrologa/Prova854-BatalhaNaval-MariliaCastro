@@ -94,6 +94,7 @@ Console.WriteLine("|                          |");
 Console.WriteLine("|                          |");
 Console.WriteLine("============================");
 Console.ReadLine();
+Console.Clear();
 
 
 
@@ -113,6 +114,7 @@ do
     // Console.WriteLine("1. Iniciar Jogo");
     // Console.WriteLine("2. Regras");
     opcaoMenu = Console.ReadLine();
+    Console.Clear();
 
 
     //convertendo a string para int nas opções do menu para poder dar entrada corretamente
@@ -129,10 +131,12 @@ do
         var jogador1 = Console.ReadLine();
         nomeJogadores.Add(jogador1);
         Console.WriteLine(" ");
+        Console.Clear();
 
         Console.WriteLine("Jogador nº2, insira seu nome abaixo: ");
         var jogador2 = Console.ReadLine();
         nomeJogadores.Add(jogador2);
+        Console.Clear();
 
         Console.WriteLine(" ");
 
