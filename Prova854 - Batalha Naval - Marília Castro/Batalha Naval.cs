@@ -96,35 +96,40 @@ do
     Console.WriteLine("1. Iniciar Jogo");
     Console.WriteLine("2. Regras");
     opcaoMenu = Console.ReadLine();
+
+
+    //convertendo a string para int nas opções do menu para poder dar entrada corretamente
+    //posso colocar nome e usar um dicionário, mas assim acho mais fácil
+    int intOpcaoMenu = Convert.ToInt32(opcaoMenu);
+
+
+    //posso fazer um switch com as opções do menu
+    if (intOpcaoMenu == 1)
+    {
+        List<string> nomeJogadores = new List<string>();
+
+        Console.WriteLine("Jogador nº1, insira seu nome abaixo: ");
+        var jogador1 = Console.ReadLine();
+        nomeJogadores.Add(jogador1);
+
+        Console.WriteLine("Jogador nº2, insira seu nome abaixo: ");
+        var jogador2 = Console.ReadLine();
+        nomeJogadores.Add(jogador2);
+
+
+        foreach (var nomes in nomeJogadores)
+        {
+            Console.Write(nomes);
+        }
+    }
+    else
+    {
+        Console.WriteLine("===== REGRAS DA BATALHA NAVAL =====");
+    }
+
+
 }
 while (!int.TryParse(opcaoMenu, out var opcao) || opcao > 0);
 
 
-//convertendo a string para int nas opções do menu para poder dar entrada corretamente
-//posso colocar nome e usar um dicionário, mas assim acho mais fácil
-int intOpcaoMenu =  Convert.ToInt32(opcaoMenu);
 
-
-//posso fazer um switch com as opções do menu
-if (intOpcaoMenu == 1)
-{
-    List<string> nomeJogadores = new List<string>();
-
-    Console.WriteLine("Jogador nº1, insira seu nome abaixo: ");
-    var jogador1 = Console.ReadLine();
-    nomeJogadores.Add(jogador1);
-
-    Console.WriteLine("Jogador nº2, insira seu nome abaixo: ");
-    var jogador2 = Console.ReadLine();
-    nomeJogadores.Add(jogador2);
-
-
-    foreach (var nomes in nomeJogadores)
-    {
-        Console.Write(nomes);
-    }
-}
-else
-{
-    Console.WriteLine("===== REGRAS DA BATALHA NAVAL =====");
-}
