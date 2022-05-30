@@ -79,37 +79,33 @@
 // */
 
 
-
-
-//Console.WriteLine("============================");
-//Console.WriteLine("|                          |");
-//Console.WriteLine("|                          |");
-//Console.WriteLine("|        SE PREPARE        |");
-//Console.WriteLine("|        PARA JOGAR        |");
-//Console.WriteLine("|                          |");
-//Console.WriteLine("|                          |");
-//Console.WriteLine("============================");
-//Console.ReadLine();
-//Console.Clear();
-
-//Console.WriteLine("============================");
-//Console.WriteLine("|                          |");
-//Console.WriteLine("|                          |");
-//Console.WriteLine("|      BATALHA NAVAL       |");
-//Console.WriteLine("|                          |");
-//Console.WriteLine("|                          |");
-//Console.WriteLine("============================");
-//Console.ReadLine();
-//Console.Clear();
-
-
-
-
-//DECLARANDO VARIAVEIS
 using System.Text.RegularExpressions;
 
-int intOpcaoMenu = 1;
+Console.WriteLine("============================");
+Console.WriteLine("|                          |");
+Console.WriteLine("|                          |");
+Console.WriteLine("|        SE PREPARE        |");
+Console.WriteLine("|        PARA JOGAR        |");
+Console.WriteLine("|                          |");
+Console.WriteLine("|                          |");
+Console.WriteLine("============================");
+Console.ReadLine();
+Console.Clear();
 
+Console.WriteLine("============================");
+Console.WriteLine("|                          |");
+Console.WriteLine("|                          |");
+Console.WriteLine("|      BATALHA NAVAL       |");
+Console.WriteLine("|                          |");
+Console.WriteLine("|                          |");
+Console.WriteLine("============================");
+Console.ReadLine();
+Console.Clear();
+
+
+
+
+int intOpcaoMenu = 1;
 
 while (intOpcaoMenu != 0)
 {
@@ -206,7 +202,7 @@ public class BatalhaNaval
             turnoDoJogador = turnoDoJogador == 0 ? 1 : 0;
             var atacante = jogadores[turnoDoJogador];
             var defensor = jogadores[turnoDoJogador == 0 ? 1 : 0];
-            //TROCAR TODOS OS JOGADOR1 = ATACANTE E JOGADOR2= DEFENSOR DENTRO DESSE WHILE
+           
 
             Console.WriteLine($"O jogo já vai começar. Passe o controle para {atacante.Nome}");
             Console.ReadLine();
@@ -379,7 +375,7 @@ public class BatalhaNaval
             MostrarCabecalho(tabuleiro, quantidadePecas);
             Console.WriteLine("Insira a posição da sua embarcação: [ex: A1B1]");
             var posicaoEscolhida = Console.ReadLine();
-            posicaoEscolhida = posicaoEscolhida.ToUpper().Trim(); //Eu vi o aviso,e os anteriores também, mas só assim garanto que ela vai vir certinha, maisculo e sem espaço.
+            posicaoEscolhida = posicaoEscolhida.ToUpper().Trim(); //Eu vi o aviso (os anteriores também) mas só assim garanto que ela vai vir certinha, maisculo e sem espaço.
 
             while (String.IsNullOrEmpty(posicaoEscolhida) || !verificarPosicaoValida(posicaoEscolhida, pecaEscolhida, tabuleiro))
             {
@@ -409,11 +405,16 @@ public class BatalhaNaval
         var posicaoCortada = regexCorte.Matches(posicao).ToArray();
         var posicaoInicial = posicaoCortada[0].Value;
         var posicaoFinal = posicaoCortada[1].Value;
-
-        var x1 = Convert.ToInt32(posicaoInicial.Substring(0, 1)) - 65;
+        var posicaoXInicial = Convert.ToInt32(posicaoInicial[0]);
+        
+        var x1 = posicaoXInicial - 65;
+        //var x1 = Convert.ToInt32(posicaoInicial.Substring(0, 1)) - 65;
         var y1 = Int32.Parse(posicaoInicial.Substring(1));
 
-        var x2 = Convert.ToInt32(posicaoFinal.Substring(0, 1)) - 65;
+
+        var posicaoXFinal = Convert.ToInt32(posicaoFinal[0]);
+        var x2 = posicaoXFinal - 65;
+        //var x2 = Convert.ToInt32(posicaoFinal.Substring(0, 1)) - 65;
         var y2 = Int32.Parse(posicaoFinal.Substring(1));
 
         if (x1 == x2)
