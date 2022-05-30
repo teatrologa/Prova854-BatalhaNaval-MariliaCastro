@@ -148,6 +148,7 @@ while (intOpcaoMenu != 0)
     else if (intOpcaoMenu == 2)
     {
         Console.Clear();
+        Console.WriteLine(" ");
         Console.WriteLine("                                        ====== REGRAS ======                                           ");
         Console.WriteLine(" ");
         Console.WriteLine(" ");
@@ -351,7 +352,8 @@ public class BatalhaNaval
             Console.WriteLine("Escolha qual embarcação você vai inserir: [digite a sigla correspondente, ex: SB]");
 
             var pecaEscolhida = Console.ReadLine();
-            
+            pecaEscolhida = pecaEscolhida.ToUpper().Trim();
+
 
             do
             {
@@ -372,11 +374,12 @@ public class BatalhaNaval
 
             } while (String.IsNullOrEmpty(pecaEscolhida) || !Pecas.Keys.Contains(pecaEscolhida.ToUpper()) || quantidadePecas[pecaEscolhida] <= 0);
 
-            pecaEscolhida = pecaEscolhida.ToUpper().Trim();
+        
 
             MostrarCabecalho(tabuleiro, quantidadePecas);
             Console.WriteLine("Insira a posição da sua embarcação: [ex: A1B1]");
             var posicaoEscolhida = Console.ReadLine();
+            posicaoEscolhida = posicaoEscolhida.ToUpper().Trim(); //Eu vi o aviso,e os anteriores também, mas só assim garanto que ela vai vir certinha, maisculo e sem espaço.
 
             while (String.IsNullOrEmpty(posicaoEscolhida) || !verificarPosicaoValida(posicaoEscolhida, pecaEscolhida, tabuleiro))
             {
