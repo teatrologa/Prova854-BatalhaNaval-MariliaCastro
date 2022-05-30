@@ -10,12 +10,8 @@ Regex regexVerificacao = new Regex(@"^([A-J][0-9]{1,2}){2}$");
 Regex regexCorte = new Regex(@"([A-J])([0-9]{1,2})");
 
 
-//var posicaoCortada = regexCorte.Matches(posicao).ToArray();
-//var posicaoInicial = posicaoCortada[0].Value;
-//var posicaoFinal = posicaoCortada[1].Value;
 
-//Console.WriteLine(posicaoInicial);
-//Console.WriteLine(posicaoFinal);
+//var x1 = Char.ConvertToUtf32(posicaoInicial, 0) - 65;
 
 
 var posicaoCortada = regexCorte.Matches(posicao).ToArray();
