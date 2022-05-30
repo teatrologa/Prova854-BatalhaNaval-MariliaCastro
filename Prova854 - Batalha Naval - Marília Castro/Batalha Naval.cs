@@ -214,6 +214,10 @@ public class BatalhaNaval
             var ataque = Console.ReadLine();
             int ataqueX;
             int ataqueY;
+            int ataqueXInicial;
+           
+
+
 
             while (String.IsNullOrEmpty(ataque))
             {
@@ -223,7 +227,8 @@ public class BatalhaNaval
                 if (!String.IsNullOrEmpty(ataque) && regexCoordenada.Match(ataque).Success)
                 {
                     ataque = ataque.ToUpper();
-                    ataqueX = Convert.ToInt32(ataque.Substring(0, 1)) - 65;
+                    ataqueXInicial = Convert.ToInt32(ataque[0]);
+                    ataqueX = ataqueXInicial - 65;
                     ataqueY = Int32.Parse(ataque.Substring(1));
 
                     if (defensor.TabuleiroAtaque[ataqueX, ataqueY] != "..")
@@ -243,7 +248,8 @@ public class BatalhaNaval
 
             ataque = ataque.ToUpper();
 
-            ataqueX = Convert.ToInt32(ataque.Substring(0, 1)) - 65;
+            ataqueXInicial = Convert.ToInt32(ataque[0]);
+            ataqueX = ataqueXInicial - 65;
             ataqueY = Int32.Parse(ataque.Substring(1));
             if (defensor.TabuleiroEntradas[ataqueX, ataqueY] != "..")
             {

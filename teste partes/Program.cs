@@ -3,7 +3,7 @@
 
 using System.Text.RegularExpressions;
 
-var posicao = "A10B1";
+var posicao = "F10G10";
 //var num = "";
 
 Regex regexVerificacao = new Regex(@"^([A-J][0-9]{1,2}){2}$");
