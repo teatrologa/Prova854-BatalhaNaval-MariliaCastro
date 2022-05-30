@@ -121,8 +121,14 @@ while (intOpcaoMenu != 0)
     Console.WriteLine("1. Iniciar Jogo");
     Console.WriteLine("2. Regras e Como de Jogar");
     Console.WriteLine("0. Fechar Jogo");
-    string opcaoMenu = Console.ReadLine(); //colocar NÃO NULO AQUI
-    intOpcaoMenu = Convert.ToInt32(opcaoMenu);
+    var opcaoMenu = Console.ReadLine();
+    while (String.IsNullOrEmpty(opcaoMenu))
+    {
+        Console.WriteLine("Por favor, digite uma opção válida.");
+        opcaoMenu = Console.ReadLine();
+    }
+    intOpcaoMenu = Int32.Parse(opcaoMenu);
+
 
     if (intOpcaoMenu == 0)
     {
@@ -142,7 +148,7 @@ while (intOpcaoMenu != 0)
     else if (intOpcaoMenu == 2)
     {
         Console.Clear();
-        Console.WriteLine("====== REGRAS ======");
+        Console.WriteLine("                                        ====== REGRAS ======                                           ");
         Console.WriteLine(" ");
         Console.WriteLine(" ");
         Console.WriteLine("Batalha naval é um jogo de tabuleiro de dois jogadores,");
@@ -155,12 +161,12 @@ while (intOpcaoMenu != 0)
         Console.WriteLine("As embarcações devem ser posicionadas na vertical ou horizontal sempre formando uma reta e nunca em diagonal.");
         Console.WriteLine(" ");
         Console.WriteLine(" ");
-        Console.WriteLine("‣ Aperte qualquer tecla para voltar ao menu.");
+        Console.WriteLine(" - Aperte qualquer tecla para voltar ao menu.");
         Console.ReadKey();
         //Escrever que ENTRE volta para o menu principal.
     }
 
-    else //DESCOBRIR COMO APENAS ACEITAR NUMERO E NÃO LETRA
+    else 
     {
         Console.Clear();
         Console.WriteLine("Opção Inválida!");
@@ -178,7 +184,7 @@ public class BatalhaNaval
         {"PS", new Embarcacao("Porta-avioes","PS", 5)},
         {"NT", new Embarcacao("Navio Tanque","NT", 4)},
         {"DS", new Embarcacao("Destroyer","DS", 3)},
-        {"SB", new Embarcacao("Submarino", "SB", 1)},
+        {"SB", new Embarcacao("Submarino", "SB", 2)},
     };
 
     int turnoDoJogador = 0;
@@ -225,7 +231,7 @@ public class BatalhaNaval
 
                     if (defensor.TabuleiroAtaque[ataqueX, ataqueY] != "..")
                     {
-                        Console.WriteLine("Posição já escolhida, tenta outra!");
+                        Console.WriteLine("Posição já escolhida, tente outra!");
                         continue;
                     }
 
@@ -278,7 +284,10 @@ public class BatalhaNaval
 
             // == loop ==
             // ataque jogador X
+            // - entrada correta
             // - verificar se acertou o navio
+            // - alterar/adicionar marcação de posição
+            // - render tabuleiro
         }
     }
 
@@ -342,6 +351,7 @@ public class BatalhaNaval
             Console.WriteLine("Escolha qual embarcação você vai inserir: [digite a sigla correspondente, ex: SB]");
 
             var pecaEscolhida = Console.ReadLine();
+            
 
             do
             {
@@ -362,7 +372,7 @@ public class BatalhaNaval
 
             } while (String.IsNullOrEmpty(pecaEscolhida) || !Pecas.Keys.Contains(pecaEscolhida.ToUpper()) || quantidadePecas[pecaEscolhida] <= 0);
 
-            pecaEscolhida = pecaEscolhida.ToUpper();
+            pecaEscolhida = pecaEscolhida.ToUpper().Trim();
 
             MostrarCabecalho(tabuleiro, quantidadePecas);
             Console.WriteLine("Insira a posição da sua embarcação: [ex: A1B1]");
@@ -376,7 +386,7 @@ public class BatalhaNaval
                 Console.WriteLine("Insira a posição da sua embarcação: [ex: A1B1]");
                 posicaoEscolhida = Console.ReadLine();
             }
-            posicaoEscolhida = posicaoEscolhida.ToUpper();
+            posicaoEscolhida = posicaoEscolhida.ToUpper().Trim();
 
             tabuleiro = PreencherTabuleiro(posicaoEscolhida, pecaEscolhida, tabuleiro);
 
